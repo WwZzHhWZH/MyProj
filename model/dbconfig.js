@@ -3,6 +3,6 @@ var options = {
     post:3306,
     user:'root',
     password:'root',
-    database: 'shoppingdb'
+    database: 'mydb'
 }
-module.exports.options = options;
+module.exports = options;
