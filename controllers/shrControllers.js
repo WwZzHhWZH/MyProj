@@ -3,7 +3,7 @@ module.exports = {
     //获取全部收货人信息
     getAllPeople: async (ctx, next) => {
         ctx.set('Access-Control-Allow-Origin', '*');
-        let jsondata = await shrDAO.getAllPeople();
+        let jsondata = await shrDAO.getAllPeople(ctx.params.userId);
         console.log(jsondata)
         ctx.set('content-type', 'application/json');
         ctx.body = jsondata;

@@ -3,8 +3,8 @@ const DAO=require('../model/DAO')
 
 class DB{
     //获取全部收货人信息的方法
-    getAllPeople(){
-        return DAO('select * from shrinfo',[]);
+    getAllPeople(userId){
+        return DAO('select * from shrinfo where userId = ?',[userId]);
     }
 
     // //获取指定编号的收货人信息方法

@@ -1,13 +1,13 @@
 const router = require('koa-router')()
+const userDAO = require('../model/userdb')
+const userController = require('../controllers/usersController')
 
 router.prefix('/users')
 
-router.get('/', function (ctx, next) {
-  ctx.body = 'this is a users response!'
+router.get('/getOneUser/:userId',async (ctx,next)=>{
+  await userController.getOneUser(ctx,next)
 })
-
-router.get('/bar', function (ctx, next) {
-  ctx.body = 'this is a users/bar response'
+router.post('/altUser',async (ctx,next)=>{
+    await userController.altUser(ctx,next)
 })
-
 module.exports = router

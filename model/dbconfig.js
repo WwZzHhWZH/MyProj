@@ -1,5 +1,5 @@
 var options = {
-    host:'127.0.0.1',
+    host:'localhost',
     post:3306,
     user:'root',
     password:'root',

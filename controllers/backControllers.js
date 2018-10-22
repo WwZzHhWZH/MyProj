@@ -1,17 +1,21 @@
+//把路由相应的业务分离出来
 var backDAO = require('../model/backDAO')
 module.exports = {
     //获取全部商品信息
     getAllProduct: async (ctx, next) => {
-        ctx.set('Access-Control-Allow-Origin', '*');
+        ctx.set('Access-Control-Allow-Origin', '*');//实现跨域请求，*任何请求都可以实现跨域
+        //创建接口
         let jsondata = await backDAO.getAllProduct();
-        console.log(jsondata)
+        // console.log(jsondata)
+        //设置输出格式为json格式
         ctx.set('content-type', 'application/json');
         ctx.body = jsondata;
     },
     //获取单个商品信息
     getOneProduct: async (ctx, next) => {
         let jsondata = await backDAO.getOneProduct(ctx.params.pId);
-        console.log(ctx.params.pId);
+        // console.log(ctx.params.pId);
+        ctx.set('content-type', 'application/json');
         ctx.body = {"code": 200, "message": "OK", data: jsondata}
     },
     //添加商品
@@ -27,7 +31,6 @@ module.exports = {
             product.pprice = query.pprice,
             product.present = query.present,
             product.stock = query.stock,
-            //2.调用用户数据访问对象的添加,修改，删除方法
             // await backDAO.addProduct(product)
             // ctx.body = {"code": 200, "message": "OK", data: jsondata}
             ctx.set('content-type', 'application/json');

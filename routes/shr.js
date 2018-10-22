@@ -2,7 +2,7 @@ const router = require('koa-router')()
 const shrControllers = require('../controllers/shrControllers')
 router.prefix('/shr')
 //获取全部收货人信息
-router.get('/',async (ctx,next)=>{
+router.get('/:userId',async (ctx,next)=>{
     // console.log('1111')
     await shrControllers.getAllPeople(ctx,next)
 })
